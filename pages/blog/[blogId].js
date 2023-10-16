@@ -5,11 +5,17 @@ import Link from "next/link";
 import InnerTopBanner from "../../components/InnerTopBanner";
 import RightLinks from "../../components/RightLinks";
 import BlogCates from "../../components/BlogCates";
+import MetaTags from "../../components/MetaTags";
 
 const BlogDetail = (props) => {
   const cdata = props.selectedEvent;
   return (
     <Fragment>
+    <MetaTags
+        title={cdata.title_tag}
+        description={cdata.meta_keyword}
+        keywords={cdata.meta_description}
+      />
       <InnerTopBanner cimage="" />
       <section className="inner section">
         {cdata && (
