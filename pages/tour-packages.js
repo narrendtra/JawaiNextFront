@@ -2,11 +2,17 @@ import React, { Fragment } from "react";
 import Image from "next/image";
 import { getAllEvents } from "../hooks/api-utils";
 import Link from "next/link";
+import MetaTags from "../components/MetaTags";
 import InnerTopBanner from "../components/InnerTopBanner";
 const TourPackages = (props) => {
   return (
     <Fragment>
-      <InnerTopBanner />
+       <MetaTags
+        title="Tour Packages"
+        description="Tour Packages"
+        keywords="Tour Packages"
+      />
+      <InnerTopBanner cimage="" />
       <section className="inner section">
         <div className="container">
           <h2 className="title">Tour Packages</h2>
