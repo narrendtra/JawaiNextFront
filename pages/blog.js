@@ -4,9 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import InnerTopBanner from "../components/InnerTopBanner";
 import BlogRight from "../components/BlogRight";
+import MetaTags from "../components/MetaTags";
+
 const Blog = (props) => {
   return (
     <Fragment>
+       <MetaTags title="Blog" description="Blog" keywords="Blog" />
       <InnerTopBanner cimage="" />
       <section className="inner section">
         {props.blogEvents && (
