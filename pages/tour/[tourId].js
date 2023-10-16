@@ -3,12 +3,18 @@ import { getAllEvents, gettourEventById } from "../../hooks/api-utils";
 import Image from "next/image";
 import InnerTopBanner from "../../components/InnerTopBanner";
 import TourBooking from "../../components/TourBooking";
+import MetaTags from "../../components/MetaTags";
 
 const TourDetail = (props) => {
   const cdata = props.selectedEvent;
   return (
     <Fragment>
-      <InnerTopBanner />
+     <MetaTags
+        title={cdata.title_tag}
+        description={cdata.meta_keyword}
+        keywords={cdata.meta_description}
+      />
+      <InnerTopBanner cimage="" />
       <section className="inner section">
         <div className="container" key={cdata.id}>
           <h2 className="title">{cdata.title}</h2>
