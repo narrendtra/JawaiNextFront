@@ -1,0 +1,404 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700|Open+Sans:300i,400,400i,600,600i,700,700i|Roboto:300,400,700|Montserrat:wght@400;600;700");
+@import "bigSlider.css";
+@import "button.css";
+@import "card.css";
+@import "header.css";
+@import "footer.css";
+
+body {
+  background-color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  color: #2a2a2a;
+}
+.clear {
+  clear: both;
+}
+p {
+  color: #2a2a2a;
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 0px 0px 15px 0px;
+  padding: 0;
+  text-align: justify;
+}
+a {
+  color: #2a2a2a;
+}
+.table {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+label {
+  padding-left: 5px;
+}
+.text-red {
+  color: #c00 !important;
+  font-size: 12px;
+}
+.red {
+  color: #c00 !important;
+  font-size: 12px;
+}
+.img-fullwidth {
+  width: 100%;
+}
+.form-check {
+  padding-left: 0px !important;
+}
+.tour_form {
+  padding: 10px;
+}
+.button .btn {
+  font-weight: 500;
+  text-align: center;
+  color: #252525;
+  display: inline-block;
+  padding: 13px 32px;
+  border-radius: 0px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+  border: none;
+  box-shadow: none;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.button .btn:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 100%;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: all 0.4s ease-out;
+  -moz-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+}
+.button .btn:hover:before {
+  -webkit-transform: scale(2);
+  transform: scale(2);
+}
+.subhadding {
+  color: #0e385d;
+  font-size: 30px;
+  margin: 15px 0;
+  font-family: "Josefin Sans", sans-serif;
+}
+.subhadding1 {
+  color: #0e385d;
+  text-align: left;
+  font-size: 30px;
+  font-family: "Josefin Sans", sans-serif;
+  display: none;
+}
+
+#explorearea {
+  width: 100%;
+  position: relative !important;
+  text-align: center;
+  margin: 0px;
+}
+
+#exploretxt {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #fff;
+}
+
+#exploretxt h1 {
+  font-family: "Josefin Sans", sans-serif;
+  text-align: center;
+  font-size: 24px;
+  color: #fff;
+}
+
+#exploretxt p {
+  color: #fff;
+  line-height: 1.6 !important;
+  margin: 0;
+}
+
+.about_box2 .img-responsive2 {
+  width: 80%;
+}
+.title {
+  font-size: 30px;
+  color: #c68e29;
+  text-transform: capitalize;
+  text-align: center;
+  position: relative;
+  margin: 20px 0;
+  font-family: "Josefin Sans", sans-serif;
+}
+.title::after {
+  background: #c68e29 none repeat scroll 0 0;
+  content: "";
+  display: block;
+  height: 2px;
+  margin: 5px auto 0;
+  width: 40px;
+}
+
+.world-better {
+  margin: 0;
+  padding: 40px 0;
+  background: #c68e29;
+}
+.world-better h1 {
+  margin: 6px 0;
+  padding: 0;
+  font-size: 32px;
+  font-weight: 400;
+  color: #fff;
+}
+.world-better p {
+  margin: 0;
+  padding: 0;
+  font-size: 16px !important;
+  color: #fff !important;
+}
+.world-better p a {
+  color: #fff !important;
+}
+.world-better p i {
+  background: #88481f;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+}
+.world-better .button {
+  margin-top: 15px;
+  text-align: center;
+}
+.world-better .btn {
+  color: #fff;
+  font-size: 16px;
+  border-radius: 20px;
+  padding: 10px 30px;
+  text-transform: capitalize;
+  background: #88481f;
+  border: #88481f 2px solid;
+}
+.world-better .btn:hover {
+  background: #000 !important;
+  color: #fff !important;
+}
+.world-better .btn:before {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+.contact-section {
+  position: relative;
+  padding: 50px 0;
+}
+.contact-section .title-box .title h2 {
+  position: relative;
+  display: block;
+  line-height: 46px;
+  padding-top: 25px;
+  margin-bottom: 58px;
+}
+
+.contact-section .title-box .title h2 span {
+  font-weight: 500;
+}
+
+.contact-section .title-box .title h2:before {
+  position: absolute;
+  content: "";
+  background: #749163;
+  width: 30px;
+  height: 3px;
+  left: 50%;
+  margin-left: -25px;
+  top: 0px;
+}
+
+.contact-section .contact-info {
+  position: relative;
+  background: #1e2919;
+  color: #ffffff;
+  padding: 45px 30px 50px 46px;
+}
+.contact-section .contact-info p {
+  color: #ffffff;
+}
+
+.contact-section .contact-info h3 {
+  position: relative;
+  display: block;
+  color: #ffffff;
+  padding-top: 11px;
+  margin-bottom: 26px;
+}
+
+.contact-section .contact-info h3:before {
+  position: absolute;
+  content: "";
+  background: #ffffff;
+  width: 30px;
+  height: 3px;
+  left: 0px;
+  top: 0px;
+}
+
+.contact-section .contact-info .single-info h5 {
+  color: #ffffff;
+  line-height: 25px;
+}
+
+.contact-section .contact-info .single-info .text a {
+  color: #fff;
+}
+
+.contact-section .contact-info .single-info {
+  margin-bottom: 25px;
+}
+
+.contact-section .contact-info .social li {
+  position: relative;
+  float: left;
+  margin-right: 4px;
+  list-style: none;
+}
+
+.contact-section .contact-info .social li:last-child {
+  margin-right: 0px;
+}
+
+.contact-section .contact-info .social li a {
+  position: relative;
+  display: inline-block;
+  font-size: 16px;
+  color: #222222;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  background: #f2f2f2;
+  text-align: center;
+}
+
+.contact-section .contact-info .social li a:hover {
+  background: #222222;
+  color: #ffffff;
+}
+
+.contact-section .contact-info .info-box {
+  position: relative;
+  display: block;
+  padding-bottom: 14px;
+}
+
+.contact-section .contact-form-area .form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.contact-section .contact-form-area .form-group input[type="text"],
+.contact-section .contact-form-area .form-group input[type="email"],
+.contact-section .contact-form-area .form-group textarea {
+  width: 100%;
+  height: 62px;
+  background: #f2f2f2;
+  border: 1px solid #f2f2f2;
+  padding: 15px 20px;
+  transition: all 500ms ease;
+}
+
+.contact-section .contact-form-area .form-group textarea {
+  height: 230px;
+  resize: none;
+}
+
+.contact-section .contact-form-area .form-group input:focus,
+.contact-section .contact-form-area .form-group textarea:focus {
+  border: 1px solid #c68e29;
+}
+
+.contact-section .contact-form-area .form-group button {
+  position: relative;
+  display: inline-block;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: #222222;
+  border: 2px solid #222222;
+  background: transparent;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 13px 45px 12px 45px;
+  transition: all 500ms ease;
+}
+
+.contact-section .contact-form-area .form-group button:hover {
+  background: #c68e29;
+  border: 2px solid #c68e29;
+  color: #000;
+}
+
+.contact-section .contact-form-area .form-group .contact-btn {
+  position: relative;
+  float: right;
+  padding-top: 4px;
+}
+
+.whatBox ul {
+  padding: 0;
+}
+.whatBox ul li {
+  margin: 0;
+  padding: 0 0 0 25px;
+  line-height: 30px;
+  color: #2a2a2a;
+  background: url(../public/images/hand.png) left center no-repeat;
+  list-style: none;
+}
+.whatBox .button {
+  margin-top: 30px;
+}
+.whatBox .btn {
+  color: #fff;
+  background: #f60;
+  border-left: 3px #000 solid;
+}
+.whatBox .btn:before {
+  background: #252525;
+}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 0.25rem;
+}
+
+.card .card-header {
+  background-color: #fff;
+  border-bottom: none;
+}

@@ -1,0 +1,29 @@
+.footer{background:#1e2919;padding:0; font-family: 'Josefin Sans', sans-serif;}
+.footer::before{opacity:.9}
+.footer a,.footer p{color:#eee;font-weight:400}
+.foonav{padding:30px 0; margin:0;	}
+.foonav ul{margin:0;padding:0;text-align:center;list-style:none;}
+.foonav ul li{margin:0 15px;padding:0;display:inline-block;	}
+ 
+.footer .footer-top{padding:30px 0 30px}
+.footer .single-widget{margin-top:30px}
+.footer .single-widget h2{font-size:20px;margin-bottom:15px; color:#c68e29;position:relative}
+.footer .single-widget h2:before{position:absolute;bottom:-1px;left:0;content:"";width:50px;height:2px}
+.footer .about p{margin-top:20px}
+.footer .list{margin-top:20px}
+.footer .list li{line-height:30px;color:#fff;font-size:16px}
+.footer .list li a{color:#fff} 
+.footer .list li i{margin-right:15px}
+.footer .useful-links ul li{position:relative;line-height:36px;margin:4px 0}
+.footer .useful-links ul li a{color:#797979;font-size:16px}
+.footer .useful-links ul li i{margin-right:10px}
+  
+.footer .footer-bottom{padding:8px 0;border-top:1px solid rgba(231,231,231,0.25)}
+.footer .social li{display:inline-block;margin-right:5px}
+.footer .social li:last-child{margin:0}
+.footer .social li a{display:block;height:34px;width:34px;line-height:37px;background:#c68e29;text-align:center;margin:0;padding:0;border-radius:100%;color:#1e2919}
+.footer .social li a:hover{background:#fff}
+.footer .copyright{text-align:center;margin-top:0}
+.footer .copyright p{font-size:16px;color:#fff;text-transform:capitalize}
+.footer .copyright a{color:#fff}
+.footer .copyright a:hover{color:#fff}
