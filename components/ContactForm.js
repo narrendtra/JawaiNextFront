@@ -80,7 +80,7 @@ const ContactForm = (submitFrom) => {
               />
             </div>
             <ReCAPTCHA
-              sitekey="6Ld0srAiAAAAAEwdtRZvFD-SrmWQ4IeqNqsnkTgQ"
+              sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
               onChange={handleRecaptchaChange}
             />
           </div>
