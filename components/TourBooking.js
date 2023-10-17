@@ -1,24 +1,102 @@
-import React, { Fragment } from "react";
-
+import React, { Fragment, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ReCAPTCHA from "react-google-recaptcha";
+import axios from "../lib/axios";
 const TourBooking = (props) => {
+  const [recaptchaValue, setRecaptchaValue] = useState(null);
+  const [errors, setErrors] = useState({});
+  const initialFormData = {
+    name: "",
+    email: "",
+    mobile: "",
+    country: "",
+    arrival_date: "",
+    car_required: "",
+    adults: "",
+    children: "",
+    messages: "",
+    agree: "",
+    hiddenField: props.title,
+  };
+  const [values, setValues] = useState(initialFormData);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
+  };
+  const handleRecaptchaChange = (value) => {
+    setRecaptchaValue(value);
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!recaptchaValue) {
+      toast("Please complete the reCAPTCHA.");
+      setIsSubmitting(false);
+    }
+    setIsSubmitting(true);
+    if (errors) {
+      setErrors({});
+    }
+    // Send form data to an API route
+    const BookingData = {
+      hiddenField: values.hiddenField,
+      name: values.name,
+      email: values.email,
+      mobile: values.mobile,
+      country: values.country,
+      arrival_date: values.arrival_date,
+      car_required: values.car_required,
+      adults: values.adults,
+      children: values.children,
+      messages: values.messages,
+      agree: values.agree,
+      recaptchaToken: recaptchaValue,
+    };
+    try {
+      const response = await axios.post("/api/sendTour", BookingData);
+      if (response.data.status === 200) {
+        toast(response.data.msg);
+        setIsSubmitting(false);
+        setErrors({});
+        setValues(initialFormData);
+      } else if (response.data.status === 400) {
+        toast(response.data.error);
+        setErrors(response.data.error);
+        setIsSubmitting(false);
+        setValues(initialFormData);
+      }
+      // Handle success or redirect to a success page
+    } catch (error) {
+      toast("Error submitting form:", error);
+      setIsSubmitting(false);
+      // Handle error
+    }
+  };
+
   return (
     <Fragment>
       <div className="your-res">
         <div className="container">
           <div className="online_booking_form_div">
             <h2>Tour Booking</h2>
-            <form action="" method="post" id="tourbookid">
+            <form method="post" onSubmit={handleSubmit}>
               <div className="tour_form">
                 <div className="row">
                   <div className="col-sm-3">
                     <div className="form-group">
                       <label>Full Name</label>
                       <input
+                        type="text"
                         name="name"
-                        id="name"
                         className="form-control"
-                        placeholder="Name"
+                        value={values.name}
+                        onChange={handleChange}
+                        placeholder="Full Name"
                       />
+                      {errors.name && (
+                        <p className="text-danger">{errors.name}</p>
+                      )}
                     </div>
                   </div>
                   <div className="col-sm-3">
@@ -26,21 +104,31 @@ const TourBooking = (props) => {
                       <label>Email</label>
                       <input
                         name="email"
-                        id="email"
+                        type="text"
                         className="form-control"
-                        placeholder="Email"
+                        value={values.email}
+                        onChange={handleChange}
+                        placeholder="Email Address"
                       />
+                      {errors.email && (
+                        <p className="text-danger">{errors.email}</p>
+                      )}
                     </div>
                   </div>
                   <div className="col-sm-3">
                     <div className="form-group">
                       <label>Contact No.</label>
                       <input
-                        name="contact"
-                        id="contact"
+                        name="mobile"
+                        type="text"
                         className="form-control"
-                        placeholder="Contact"
+                        value={values.mobile}
+                        onChange={handleChange}
+                        placeholder="Mobile"
                       />
+                      {errors.mobile && (
+                        <p className="text-danger">{errors.mobile}</p>
+                      )}
                     </div>
                   </div>
                   <div className="col-sm-3">
@@ -48,6 +136,7 @@ const TourBooking = (props) => {
                       <label>Counrty</label>
                       <select
                         name="country"
+                        onChange={handleChange}
                         className="form-control"
                         id="country"
                       >
@@ -392,6 +481,9 @@ const TourBooking = (props) => {
                         <option defaultValue="Zambia">Zambia</option>
                         <option defaultValue="Zimbabwe">Zimbabwe</option>
                       </select>
+                      {errors.country && (
+                        <p className="text-danger">{errors.country}</p>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -401,11 +493,16 @@ const TourBooking = (props) => {
                     <div className="form-group">
                       <label>Arrival Date</label>
                       <input
+                        type="date"
                         name="arrival_date"
-                        id="arrival_date"
-                        className="form-control hasDatepicker"
+                        className="form-control"
+                        value={values.arrival_date}
+                        onChange={handleChange}
                         placeholder="Arrival Date"
                       />
+                      {errors.arrival_date && (
+                        <p className="text-danger">{errors.arrival_date}</p>
+                      )}
                     </div>
                   </div>
                   <div className="col-sm-3">
@@ -413,8 +510,8 @@ const TourBooking = (props) => {
                       <label>Car Required</label>
                       <select
                         className="form-control"
-                        name="type_car"
-                        id="type_car"
+                        onChange={handleChange}
+                        name="car_required"
                       >
                         <option defaultValue="">Select Vehicle type</option>
                         <option defaultValue="None">None </option>
@@ -431,71 +528,93 @@ const TourBooking = (props) => {
                           Not Required
                         </option>
                       </select>
+                      {errors.car_required && (
+                        <p className="text-danger">{errors.car_required}</p>
+                      )}
                     </div>
                   </div>
                   <div className="col-sm-3">
                     <div className="form-group">
                       <label>Adult</label>
                       <input
-                        name="adult"
-                        id="adult"
+                        type="text"
+                        name="adults"
                         className="form-control"
-                        placeholder="Adult"
+                        value={values.adults}
+                        onChange={handleChange}
+                        placeholder="Adults"
                       />
+                      {errors.adults && (
+                        <p className="text-danger">{errors.adults}</p>
+                      )}
                     </div>
                   </div>
                   <div className="col-sm-3">
                     <div className="form-group">
                       <label>Children </label>
                       <input
+                        type="text"
                         name="children"
-                        id="children"
                         className="form-control"
+                        value={values.children}
+                        onChange={handleChange}
                         placeholder="Children"
                       />
+                      {errors.children && (
+                        <p className="text-danger">{errors.children}</p>
+                      )}
                     </div>
                   </div>
                 </div>
 
                 <div className="row">
-                  <div className="col-sm-6">
+                  <div className="col-sm-12">
                     <div className="form-group">
                       <label>Special Request</label>
                       <textarea
+                        name="messages"
                         className="form-control"
-                        name="message"
-                        id="messages"
-                        rows="3"
+                        value={values.messages}
+                        onChange={handleChange}
                         placeholder="Message"
+                        rows="4"
                       />
                     </div>
-                    <input type="checkbox" name="agreeid" id="agreeid" /> I
-                    agree with all of <a href="">Terms &amp; Condition</a> ready
-                    to go
+                    <input
+                      type="checkbox"
+                      onChange={handleChange}
+                      name="agree"
+                      id="agree"
+                    />{" "}
+                    I agree with all of <a href=""> Terms &amp; Condition</a>
+                    ready to go
                     <br /> <br />
+                    {errors.agree && (
+                      <p className="text-danger">{errors.agree}</p>
+                    )}
                   </div>
 
                   <div className="col-sm-12">
                     <div className="form-group">
                       <input
                         type="hidden"
-                        className="form-control"
-                        name="page_url"
-                        id="page_url"
-                        defaultValue=""
+                        name="hiddenField"
+                        value={values.hiddenField}
                       />
-                      <input
-                        type="hidden"
-                        id="txtpname"
-                        name="txtpname"
-                        defaultValue={props.title}
+                      <ReCAPTCHA
+                        sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                        onChange={handleRecaptchaChange}
                       />
                       <button
-                        className="btn btn-danger btn-lg"
+                        disabled={isSubmitting}
                         type="submit"
-                        id="tourid"
+                        className="btn btn-danger btn-lg mt-2"
                       >
-                        Submit
+                        {isSubmitting ? (
+                          <span className="spinner-border spinner-border-sm mr-1"></span>
+                        ) : (
+                          "Submit"
+                        )}
                       </button>
                     </div>
                   </div>
@@ -505,6 +624,7 @@ const TourBooking = (props) => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </Fragment>
   );
 };
